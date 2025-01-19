@@ -1,4 +1,6 @@
-import Header from "../components/Header"
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+
 
 function Home(){
     return(
@@ -6,6 +8,7 @@ function Home(){
             <Header/>
             <h1>titulo</h1>
             <p>sub</p>
+            <Footer/>
         </>
     )
 }

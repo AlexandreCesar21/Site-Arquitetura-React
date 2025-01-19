@@ -7,7 +7,7 @@ import contact from './pages/contact'
 import project from './pages/project'
 
 // COMPONENTS
-import Header from './components/Header'
+import Header from "./components/Header/Header";
 
 function App() {
 
@@ -18,7 +18,6 @@ function App() {
           <Route path='/about' element={<><h1>ABOUT</h1><Link to='/'>Navegador</Link></>}></Route>
           <Route path='/projects' element={<><h1>PROJECTS</h1></>}></Route>
           <Route path='/contact' element={<><h1>CONTACT</h1></>}></Route>
-
       </Routes>
     </Router>
   )
