@@ -6,6 +6,9 @@ import about from './pages/about'
 import contact from './pages/contact'
 import project from './pages/project'
 
+// COMPONENTS
+import Header from './components/Header'
+
 function App() {
 
   return (
