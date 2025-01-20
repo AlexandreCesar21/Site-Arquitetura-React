@@ -10,7 +10,6 @@ import project from './pages/project'
 import Header from "./components/Header/Header";
 
 function App() {
-
   return (
     <Router>
       <Routes>
