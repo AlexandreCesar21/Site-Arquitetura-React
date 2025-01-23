@@ -15,4 +15,10 @@
     height: 150px;
     margin: 0 auto;
     max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 206px;
+    width: 100%;  
 }
