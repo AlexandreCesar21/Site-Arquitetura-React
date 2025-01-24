@@ -1,8 +1,17 @@
+import Banner from "../components/Banner/Banner";
+import ContactForm from "../components/ContactForm/ContactForm";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+
 function contact(){
     return(
         <>
-            <h1>titulo 3</h1>
-            <p>sub 3</p>
+            <Header/>
+            <Banner title="Contact" image="Contact.jpg"/>
+            <div className="container">
+                <ContactForm/>
+            </div>
+            <Footer/>
         </>
     )
 }
