@@ -10,7 +10,6 @@ function Home(){
             <Header/>
             <div className="container">
                 <Hero/>
-                <h1>gfdgdfg</h1>
                 <ProjectsList/>
             </div>
             <Footer/>
