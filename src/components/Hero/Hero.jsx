@@ -3,7 +3,6 @@ import "./Hero.css"
 import Button from "../Button/Button"
 
 
-
 function Hero() {
     return (
         <div className="hero d-flex al-center">
@@ -11,7 +10,7 @@ function Hero() {
                 <h1>Let Your Home Be Unique</h1>
                 <p>There are many variations of the passages of lorem Ipsum fromavailable, majority.</p>
                 <Link>
-                    <Button buttonStyle="secondary" arrow>
+                    <Button buttonStyle="primary">
                             Get Started 
                     </Button>               
                 </Link> 

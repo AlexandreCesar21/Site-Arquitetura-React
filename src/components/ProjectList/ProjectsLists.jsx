@@ -32,6 +32,7 @@ function ProjectsList(props) {
             </div>            
             <div className="projects-grid">
                 {
+                    projects ? 
                     projects.map((project) => (
                         <div className="project-card d-flex jc-center al-center fd-column" key={project.id}> 
                             <div className="thumb tertiary-background" style={{backgroundImage: `url(${project.thumb})`}}></div>
@@ -39,7 +40,9 @@ function ProjectsList(props) {
                             <p>{project.subtitle}</p>
                             <img src={LikePrenchido} height="20px"/>
                         </div>
-                    ))
+                    )) 
+                : 
+                null
                 }
             </div>
         </div>
