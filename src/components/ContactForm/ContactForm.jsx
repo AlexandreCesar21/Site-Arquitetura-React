@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./ContactForm.css";
 
 // COMPONENTS
 import Button from "../Button/Button";
+import { AppContext } from "../../contexts/AppContext";
 
 function ContactForm() {
     const [formData, setFormData] = useState({
@@ -14,6 +15,14 @@ function ContactForm() {
     const [isFormValid, setIsFormValid] = useState(false);
     const [formSubmitLoading, setFormSubmitLoading] = useState(false);
     const [formSubmitted, setFormSubmitted] = useState(false);
+
+
+    const { language, languages, loading } = useContext(AppContext)
+
+    if (loading || !languages || !languages[language]) {
+        return <p>Carregando...</p>;
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -71,9 +80,21 @@ function ContactForm() {
         }));
     };
 
+    /*
+    <h2>We love meeting new people and helping them.</h2>
+    Adoramos conhecer novas pessoas e ajudá-las.
+    <h2>{languages[language]?.ProjectsList?.title || defaultProjetc[language] || defaultProjetc.en}</h2>
+
+    */
+
+    const defaltContext = {
+        br: "Adoramos conhecer novas pessoas e ajudá-las.", 
+        en: "We love meeting new people and helping them."
+    } 
+
     return (
         <div className="contact-form d-flex fd-column al-center">
-            <h2>We love meeting new people and helping them.</h2>
+            <h2>{languages[language]?.ContactForm?.title || defaltContext[language] || defaltContext.en}</h2>
             <form onSubmit={handleSubmit}>
                 <div className="d-flex form-group">
                     <input
@@ -81,7 +102,7 @@ function ContactForm() {
                         type="text"
                         id="name"
                         name="name"
-                        placeholder="Name *"
+                        placeholder={languages[language]?.ContactForm?.input || (language === "br" ? "Nome" : "Name *")}
                         onChange={handleChange}
                         value={formData.name}
                     />
@@ -90,7 +111,7 @@ function ContactForm() {
                         type="email"
                         id="email"
                         name="email"
-                        placeholder="Email *"
+                        placeholder={languages[language]?.ContactForm?.input || (language === "br" ? "E-mail" : "Email *")}
                         onChange={handleChange}
                         value={formData.email}
                     />
@@ -100,21 +121,28 @@ function ContactForm() {
                         className="form-input"
                         id="message"
                         name="message"
-                        placeholder="Mensagem *"
+                        placeholder={languages[language]?.ContactForm?.input || (language === "br" ? "Mensagem" : "Message")}
                         onChange={handleChange}
                         value={formData.message}
                         rows="4"
                     ></textarea>
                 </div>
                 <div className="al-center d-flex jc-end form-group">
-                    {formSubmitted && <p className="text-primary">Sucesso!</p>}
+                    {formSubmitted && <p className="text-primary">{languages[language]?.ContactForm?.p || (language === "br" ? "Sucesso!" : "Success!")}</p>}
                     <Button type="submit" buttonStyle="secondary" disabled={!isFormValid || formSubmitLoading}>
-                        {formSubmitLoading ? "Enviando..." : "Enviar"}
+                        
+                        {formSubmitLoading ? (languages[language]?.ContactForm?.div || (language === "br" ? "Enviando..." : "Sending...")) : (languages[language]?.ContactForm?.div || (language === "br" ? "Enviar" : "To send"))}
                     </Button>
                 </div>
             </form>
         </div>
     );
 }
+
+/*
+Enviando...
+
+Enviar
+*/
 
 export default ContactForm;

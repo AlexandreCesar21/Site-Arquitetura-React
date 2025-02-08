@@ -45,6 +45,13 @@ button {
     color: white;
 }
 
+button.unstyled, .button.unstyled {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+  }
+
 
 /* DISABLED */
  .disabled {

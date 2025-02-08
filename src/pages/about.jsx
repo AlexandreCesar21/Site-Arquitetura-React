@@ -1,7 +1,12 @@
-    import AboutText from "../components/AboutText/AboutText";
-    import Banner from "../components/Banner/Banner";
-    import Header from "../components/Header/Header";
-    import Footer from "../components/Footer/Footer";
+import AboutText from "../components/AboutText/AboutText";
+import Banner from "../components/Banner/Banner";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+
+import { AppContext } from "../../contexts/AppContext";
+import { useContext } from 'react';
+
+
 
 function about(){
     return(

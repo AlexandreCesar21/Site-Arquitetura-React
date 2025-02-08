@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import About  from './pages/about'
 import Contact  from './pages/contact'
 import Project  from './pages/project'
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 
 // UTILS
 import ScrollToTop from './utils/ScrollTop'
@@ -14,12 +15,12 @@ import { AppContext } from './contexts/AppContext'
 function App() {
   const { loading } = useContext(AppContext)
   
-  if(AppContext.loading){
-    return 'Loading...'
+  if(loading){
+    return <LoadingSpinner/>
   }
   
     return (
-    <Router>  
+      <Router>  
       <ScrollToTop/>
       <Routes>
       <Route path='/' element={<Home />} />
