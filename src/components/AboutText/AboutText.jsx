@@ -13,6 +13,7 @@ const defaultProjetc = {
 
 
 
+
 if (loading || !languages || !languages[language]) {
     return <p>Carregando...</p>;
 }

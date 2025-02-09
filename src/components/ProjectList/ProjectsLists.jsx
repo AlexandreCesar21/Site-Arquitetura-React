@@ -5,14 +5,34 @@ import "./ProjectsLists.css"
 import Like from '../../assets/like.svg'
 import LikePrenchido from '../../assets/like_prenchido.svg'
 
-// UTILS
+// COMPONENTS
+import Button from "../Button/Button"
+
+// CONTEXT
 import { getApiData } from "../../services/apiService"
+
+// UTILS
 import { AppContext } from "../../contexts/AppContext"
 
 function ProjectsList(props) {
     const [projects, setProjects] = useState([])
-    
+    const [favProjects, setFavProject] = useState([])
     const { language, languages, loading } = useContext(AppContext);
+    
+    const handleSavedProjects = (id) => {
+        setFavProject((prevFavProjects) => {
+            if(prevFavProjects.includes(id)){
+                const filterArray = prevFavProjects.filter((projectId) => projectId !== id)
+                sessionStorage.setItem('favProjects', JSON.stringify(filterArray))
+                return prevFavProjects.filter((projectId) => projectId !== id)
+            } else {
+                sessionStorage.setItem('FavProjects', JSON.stringify([...prevFavProjects, id]))
+                return [...prevFavProjects, id]
+            }
+        })
+    }
+
+
 
     const defaultProjetc = {
         br: "Acompanhe Nossos Projetos",
@@ -36,12 +56,12 @@ function ProjectsList(props) {
         fetchData()
     }, [])
 
-/* <h2>Follow Our Projects</h2>
-
-    <p>It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.</p>
-    
-    {languages[language]?.ProjectsList?.subtitle || defaultProjetc[language] || defaultProjetc.en}
-    */
+    useEffect(() => {
+        const savedFavProjects = JSON.parse(sessionStorage.getItem('favProjects'))
+        if (savedFavProjects) {
+            setFavProject(savedFavProjects)
+        }
+    })
 
 
     return (
@@ -64,7 +84,9 @@ function ProjectsList(props) {
                             <div className="thumb tertiary-background" style={{backgroundImage: `url(${project.thumb})`}}></div>
                             <h3>{project.title}</h3>
                             <p>{project.subtitle}</p>
-                            <img src={LikePrenchido} height="20px"/>
+                            <Button buttonStyle="unstyled" onClick={() => handleSavedProjects(project.id)}>
+                                <img src={favProjects.includes(project.id) ? LikePrenchido : Like} height="20px"/>
+                            </Button>
                         </div>
                     )) 
                 : 

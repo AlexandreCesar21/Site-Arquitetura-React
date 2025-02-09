@@ -3,21 +3,19 @@ import Banner from "../components/Banner/Banner";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-import { AppContext } from "../../contexts/AppContext";
-import { useContext } from 'react';
-
-
 
 function about(){
+    
+
     return(
         <>
             <Header/>
-            <Banner title="About" image="about.jpg"/>
+            <Banner title="Abouth" image="about.jpg"/>
             <div className="container">
                 <AboutText/>
             </div>
             <Footer/>
-        </>
+        </> 
     )
 }
 
