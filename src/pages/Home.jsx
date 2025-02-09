@@ -1,7 +1,7 @@
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
 import ProjectsList from "../components/ProjectList/ProjectsLists";
-import Footer from "../components/Footer/Footer";
+import Footer from "../components/Footer/Footer.jsx";
 
 function Home(){
     return(
